@@ -41,7 +41,7 @@ h2 {
     margin-bottom: 60px;
 }
 canvas {
-    border:2px #e60404;
+    border: 2px solid #fdfdfd;
 
     
 }
@@ -60,4 +60,7 @@ button{
 }
 h3 {
     font-family: "C";
+}
+#contagem {
+    font-family: "RDR";
 }

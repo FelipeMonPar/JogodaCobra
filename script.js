@@ -101,28 +101,48 @@ function atualizarDirecao(evento){     // keyCode - código da tecla
 }
 
 function reiniciarJogo() {
-    // Resetar o estado do jogo
-    snake = [];
-    snake[0] = {
-        x: 8 * bloco,
-        y: 8 * bloco
-    };
-    direcao = "direita";
-    comida = {
-        x: Math.floor(Math.random() * 15 + 1) * bloco,
-        y: Math.floor(Math.random() * 15 + 1) * bloco
-    };
-
-    pontuacao = 0;               // Zera a pontuação
-    atualizarPontuacao();        // Atualiza na tela
-
-    // Oculta a tela de fim de jogo
+    // Esconde a tela de fim de jogo e canvas temporariamente
     document.getElementById("game-over").style.display = "none";
+    document.getElementById("snake").style.display = "none";
+    document.getElementById("contagem").style.display = "block";
 
-    // Reinicia o loop do jogo
-    jogo = setInterval(iniciarJogo, 100);
-    somStart.play(); // toca o som ao comer
-}  
+    // Faz a contagem regressiva igual à do início
+    let tempo = 3;
+    const contagemEl = document.getElementById("contagem");
+
+    const intervalo = setInterval(() => {
+        if (tempo > 0) {
+            contagemEl.innerText = tempo;
+            tempo--;
+        } else {
+            contagemEl.innerText = "Vai!";
+            clearInterval(intervalo);
+
+            setTimeout(() => {
+                contagemEl.style.display = "none";
+                document.getElementById("snake").style.display = "block";
+
+                // Reinicializa o estado do jogo
+                snake = [];
+                snake[0] = {
+                    x: 8 * bloco,
+                    y: 8 * bloco
+                };
+                direcao = "direita";
+                comida = {
+                    x: Math.floor(Math.random() * 15 + 1) * bloco,
+                    y: Math.floor(Math.random() * 15 + 1) * bloco
+                };
+                pontuacao = 0;
+                atualizarPontuacao();
+
+                somStart.play(); // toca som de reinício
+                jogo = setInterval(iniciarJogo, 100);
+            }, 800);
+        }
+    }, 1000);
+}
+ 
 
 function atualizarPontuacao() {
     document.getElementById("pontuacao").innerHTML = "Pontuação: " + pontuacao;
@@ -184,7 +204,27 @@ let jogo; // variável global para controle
 
 function comecarJogo() {
     document.getElementById("botao-iniciar").style.display = "none";
-    document.getElementById("snake").style.display = "block";
-    somStart.play(); // toca o som ao comer
-    jogo = setInterval(iniciarJogo, 100);
+    document.getElementById("contagem").style.display = "block";
+    document.getElementById("snake").style.display = "none";
+    
+    let tempo = 3;
+    const contagemEl = document.getElementById("contagem");
+
+    const intervalo = setInterval(() => {
+        if (tempo > 0) {
+            contagemEl.innerText = tempo;
+            tempo--;
+        } else {
+            contagemEl.innerText = "Vai!";
+            clearInterval(intervalo);
+
+            setTimeout(() => {
+                contagemEl.style.display = "none";
+                document.getElementById("snake").style.display = "block";
+                somStart.play();
+                jogo = setInterval(iniciarJogo, 100);
+            }, 800); // Espera mais um pouco após o "Vai!"
+        }
+    }, 1000);
 }
+
