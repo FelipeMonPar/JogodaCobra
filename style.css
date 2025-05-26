@@ -1,0 +1,63 @@
+@font-face {
+    font-family: "911Porcheasd";
+    src: url(png/911porschav3expand.ttf);
+
+}
+@font-face {
+    font-family: "RDR";
+    src: url(png/chinese\ rocks\ rg.otf);
+}
+@font-face {
+    font-family: "C";
+    src: url(png/Brasileirão.ttf);
+}
+body {
+    text-align: center;
+    background-color: rgb(22, 20, 20);
+    height: 70vh;
+    width: 70;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: rgb(255, 255, 255);
+    
+}
+h1 {
+    color: #e60404;
+    background: fixed;
+    width: 40vh;
+    text-align: center;
+    border-radius: 15px;
+    font-family: "RDR";
+    font-size: 80px;
+    margin-bottom: 10px;
+}
+h2 {
+    font-family: "RDR";
+    font-size: 25px;
+    color: #e60404;
+    height: 0vh;
+    margin-bottom: 60px;
+}
+canvas {
+    border:2px #e60404;
+
+    
+}
+button{
+    text-align: center;
+    font-family: "RDR";
+    width: 30vh;
+    font-size: 60px;
+    height: 10vh;
+    color: #e60404;
+    background-color: rgb(255, 255, 255);
+}
+#pontuacao {
+    font-family: "RDR";
+
+}
+h3 {
+    font-family: "C";
+}
